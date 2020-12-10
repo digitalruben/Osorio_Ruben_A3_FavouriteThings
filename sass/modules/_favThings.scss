@@ -1,0 +1,30 @@
+.favThingsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .favThingsSections {
+        width: 70%;
+    }
+
+    .thing {
+        text-align: center;
+        width: 100%;
+
+        h2 {
+            font-family: $mainTitleFont;
+            font-size: 2rem;
+        }
+        
+        img {
+            width: 100%;
+        }
+
+        p {
+            font-family: $mainFontFamily;
+            text-align: left;
+            color: #00c0f9;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+body {
+    font-size: $mainFontSize;
+    color: $mainFontColor;
+    background-color: $bgColor;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    background-color: $secondaryColor;
+}
