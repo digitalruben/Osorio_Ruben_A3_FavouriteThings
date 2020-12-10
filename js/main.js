@@ -1,38 +1,34 @@
-// import your packages here
-import { fetchData, postData } from "./modules/TheDataMiner.js";
+import { fetchData } from "./modules/theDataMiner.js";
 
 (() => {
-    // stub * just a place for non-component-specific stuff
-    console.log('loaded');
-    
-    function popErrorBox(message) {
-        alert("Something has gone horribly, horribly wrong");
-    }
 
-    function handleDataSet(data) {
-        let userSection = document.querySelector('.user-section'),
-            userTemplate = document.querySelector('#user-template').content;
+    function displayData(data) {
+        let userSection = document.querySelector('.favThingsContainer'),
+            userTemplate = document.querySelector('#favThings').content;
 
         for (let user in data) {
-            let currentUser = userTemplate.cloneNode(true),
-                currentUserText = currentUser.querySelector('.user').children;
-
-            currentUserText[1].src = `images/${data[user].image}`;
-            currentUserText[2].textContent = data[user].name;
-            currentUserText[3].textContent = data[user].activity;
-            currentUserText[4].textContent = data[user].nickname;            
+            let currentFavourite = userTemplate.cloneNode(true),
+                currentFavouriteText = currentFavourite.querySelector('.thing').children;
+            
+            currentFavouriteText[1].textContent = data[user].title;
+            currentFavouriteText[2].src = `images/${data[user].image}`;
+            currentFavouriteText[3].textContent = data[user].description;
 
             // add this new user to the view
-            userSection.appendChild(currentUser);
+            userSection.appendChild(currentFavourite);
         }
     }
 
+    function ErrorMsg (message) {
+        alert("Check your data. Something has gone wrong.");
+    }
 
-    
+    fetchData('./includes/functions.php')
+    .then(data => 
+        console.log(data))
+    .catch((err => {
+        console.log(err);  
+    }))
 
-
-
-
-
-    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });   
+    fetchData("./includes/functions.php").then(data => displayData(data)).catch(err => { console.log(err); ErrorMsg(err); });
 })();

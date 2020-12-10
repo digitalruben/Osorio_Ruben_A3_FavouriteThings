@@ -1,11 +1,16 @@
 body {
-    font: $main-font;
-    font-size: $main-font-size;
-    background-color: $main-bg-color;
-    margin: 0 0 50px 0; 
-    border: 0;
+    font-size: $mainFontSize;
+    color: $mainFontColor;
+    background-color: $bgColor;
+    margin: 0 auto;
 }
 
 .hidden {
     display: none;
+}
+
+header {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    background-color: $secondaryColor;
 }

@@ -1,26 +1,25 @@
 <?php 
 
-    $db_dsn = array( 
+    $db_dsn = array(
         'host' => 'localhost',
-        'dbname' => 'my_favourite_things',
-        'charset' => 'utf8'
+        'dbname' => 'FavouriteThings',
+        'charset' => 'utf8',
     );
-
-    $dsn = 'mysql:' .http_build_query($db_dsn, '', ';');
-
-    //This is the DB credentials
-    $db_user = 'root';
-    $db_pass = ''; // windows users leave this blank
-
-
-
     
-    try{
+    $dsn = 'mysql:' . http_build_query($db_dsn, '', ';');
+
+    // Set up connection credentials
+    $db_user = 'root';
+    $db_pass = '';
+
+    $pdo = new PDO($dsn, $db_user, $db_pass);
+
+    /* check connection */
+    try {
         $pdo = new PDO($dsn, $db_user, $db_pass);
-        //var_dump($pdo);
+        // var_dump($pdo);
         // echo (in this case) is almost like console.log
-        // echo "you're in! enjoy the show";
-    } catch (PDOException $exception){
-        echo 'Connection Error:'.$exception->getMessage();
+    } catch (PDOException $exception) {
+        echo "Connection error: " . $exception->getMessage();
         exit();
     }
